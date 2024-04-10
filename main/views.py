@@ -12,7 +12,6 @@ from django.contrib.auth import login, authenticate
 
 
 
-
 # Create your views here.
 def index(request):
     articles = Article.objects.all()
@@ -77,7 +76,8 @@ def delete_article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
     if request.method == 'POST':
         article.delete()
-        return redirect('index')
-    return render(request, 'main/delete_article.html', {'article': article})
+        return redirect('index')  # Assuming 'index' is the name of the URL pattern for your homepage or article list page.
+    else:
+        return render(request, 'main/delete_article.html', {'article': article})
 
 

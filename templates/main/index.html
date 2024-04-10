@@ -55,7 +55,7 @@
                             <p class="card-footer-item">
                                 <span>
                                     <!-- Triggering the Modal -->
-                                    <button class="button is-danger" onclick="openDeleteModal('{{ article.id }}')">Delete</button>
+                                    <a href="{% url 'delete_article' article.id %}" class="button">Delete Article</a>
                                 </span>
                             </p>
                         </footer>
@@ -81,5 +81,6 @@
         document.getElementById('deleteForm').action = formAction;
         toggleModal('deleteConfirmationModal', true);
     }
+    
 </script>
 {% endblock %}

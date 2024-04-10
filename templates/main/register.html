@@ -1,13 +1,52 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<section class="hero is-fullheight bg-gradient-to-tr from-gray-900 to-gray-700">
+<style>
+    .background {
+        background: linear-gradient(to bottom right, #f7e2d1 40%, #f3d1c5 100%);
+        font-family: 'Homemade Apple', cursive;
+    }
+
+    .input, .button, .label {
+        border-radius: 8px;
+        font-family: inherit;
+    }
+
+    .input, .button {
+        border: 1px solid #a2836e;
+        background-color: #fbf8f1;
+    }
+
+    .button {
+        color: #fff;
+        background-color: #a2836e;
+        border-color: #917557;
+    }
+
+    .button:hover {
+        background-color: #b3947d;
+    }
+
+    .help.is-danger {
+        color: #d9534f;
+    }
+
+    .title, .subtitle {
+        color: #5a4a42;
+    }
+
+    .label {
+        color: #5a4a42;
+    }
+</style>
+
+<section class="hero is-fullheight background">
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="columns is-8 is-variable">
-                <div class="column is-two-thirds has-text-left" style="color: #f5f5f5;">
+                <div class="column is-two-thirds has-text-left">
                     <h1 class="title is-1">Register</h1>
-                    <p class="is-size-4">Join our community and create free notes</p>
+                    <p class="is-size-4">Join our community and start creating your personal notes.</p>
                 </div>
                 <div class="column is-one-third has-text-left">
                     <form method="post" action="{% url 'register' %}">
@@ -49,7 +88,7 @@
                             {% endfor %}
                         </div>
                         <div class="control">
-                            <button type="submit" class="button is-black is-fullwidth has-text-weight-medium is-medium">Register</button>
+                            <button type="submit" class="button is-fullwidth has-text-weight-medium is-medium">Register</button>
                         </div>
                     </form>
                 </div>

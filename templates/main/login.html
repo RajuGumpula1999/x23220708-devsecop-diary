@@ -1,29 +1,36 @@
-{% extends "main/base.html" %}  <!-- Ensure this extends your project's base template -->
+{% extends "main/base.html" %}
 
 {% block content %}
-<div class="bg-gradient-to-tr from-gray-900 to-gray-700 h-screen w-full flex justify-center items-center">
-    <div class="bg-gray-800 w-full sm:w-1/2 md:w-9/12 lg:w-1/2 shadow-md flex flex-col md:flex-row items-center mx-5 sm:m-0 rounded">
-      <div class="w-full md:w-1/2 hidden md:flex flex-col justify-center items-center text-white">
-        <h1 class="text-3xl">Welcome back</h1>
-        <p class="text-5xl font-extrabold">Sign In!</p>
-      </div>
-      <div class="bg-white w-full md:w-1/2 flex flex-col items-center py-12 px-8">
-        <h3 class="text-3xl font-bold text-gray-900 mb-4">
-          LOGIN
-        </h3>
-        <form method="post" action="{% url 'login' %}" class="w-full flex flex-col justify-center">
-          {% csrf_token %}
-          <div class="mb-4">
-            <input type="text" name="username" placeholder="Username" class="w-full p-3 rounded border placeholder-gray-500 focus:outline-none focus:border-gray-900" required />
-          </div>
-          <div class="mb-4">
-            <input type="password" name="password" placeholder="Password" class="w-full p-3 rounded border placeholder-gray-500 focus:outline-none focus:border-gray-900" required />
-          </div>
-          <button type="submit" class="bg-gray-900 font-bold text-white focus:outline-none rounded p-3 mt-4">
-            Sign In
-          </button>
+<style>
+  .diary-bg {
+    background-color: #f4e8de;
+    background-image: url('path/to/your/paper-texture.jpg');
+  }
+  .diary-font {
+    font-family: 'Tangerine', cursive; /* Example of a handwriting-like font */
+  }
+</style>
+<div class="min-h-screen flex items-center justify-center diary-bg">
+    <div class="w-full max-w-md rounded overflow-hidden shadow-lg p-5">
+      <div class="bg-white p-8 rounded-lg shadow-lg min-w-full">
+        <h2 class="text-3xl diary-font text-center text-brown-800 mb-4">Diary Login</h2>
+        <form method="post" action="{% url 'login' %}" class="diary-font text-lg text-gray-800">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
+                <input type="text" name="username" id="username" placeholder="Your username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
+                <input type="password" name="password" id="password" placeholder="Your password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="w-full bg-brown-800 text-white font-bold py-2 px-4 rounded hover:bg-brown-600 focus:outline-none focus:shadow-outline">
+                    Sign In
+                </button>
+            </div>
         </form>
       </div>
     </div>
-  </div>
+</div>
 {% endblock %}
