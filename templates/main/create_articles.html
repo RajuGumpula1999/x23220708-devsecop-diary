@@ -5,7 +5,7 @@
 {% block content %}
 <style>
   .custom-bg {
-    background-color: #293241; /* Adjusted to black as requested */
+    background-color: #ff9b9b; /* Dark shade for background */
   }
 </style>
 <div class="flex items-center justify-center min-h-screen custom-bg">
@@ -15,12 +15,14 @@
         <form method="post" action="">
             {% csrf_token %}
             {% for field in form %}
+            <!-- Conditional rendering for a textarea on the second field -->
             {% if forloop.counter == 2 %}
             <div class="mb-4">
                 <label class="block text-gray-200 text-sm font-semibold mb-2" for="{{ field.id_for_label }}">
                     {{ field.label }}{% if field.field.required %} *{% endif %}
                 </label>
                 <textarea id="{{ field.id_for_label }}" name="{{ field.html_name }}" rows="4" class="form-textarea w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500 focus:border-blue-500 {% if field.errors %}border-red-500{% endif %}" placeholder="{{ field.label }}">{{ field.value|default_if_none:'' }}</textarea>
+                <!-- Display errors for the field -->
                 {% if field.errors %}
                 {% for error in field.errors %}
                 <p class="text-red-500 text-xs italic">{{ error }}</p>
@@ -33,6 +35,7 @@
                     {{ field.label }}{% if field.field.required %} *{% endif %}
                 </label>
                 <input class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500 {% if field.errors %}border-red-500{% else %}focus:border-blue-500{% endif %}" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" name="{{ field.html_name }}" placeholder="{{ field.label }}" value="{{ field.value|default_if_none:'' }}">
+                <!-- Display errors for the field -->
                 {% if field.errors %}
                 {% for error in field.errors %}
                 <p class="text-red-500 text-xs italic">{{ error }}</p>
